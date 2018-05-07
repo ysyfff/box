@@ -3,7 +3,7 @@
   "description": "前端工程 - box",
   "version": "1.0.0",
   "scripts": {
-    "start": "packing serve",
+    "start": "NODE_ENV=development packing serve",
     "box": "electron .",
     "start:dist": "packing build && packing serve-dist",
     "build": "packing build -o",
