@@ -16,7 +16,9 @@
     "eslint": "eslint --fix src",
     "lint": "npm run stylelint && npm run eslint"
   },
-  
+  "pre-commit": [
+    
+  ],
   "dependencies": {
     "antd": "^3.5.0",
     "babel-plugin-import": "^1.7.0",
