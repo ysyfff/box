@@ -7,6 +7,13 @@
 
 export default (packing) => {
   const p = packing;
+  // 模版引擎类型，目前支持的类型有[html,pug,ejs,handlebars,smarty,velocity,artTemplate]
+  p.template.options.engine = 'html';
+  // 模版文件扩展名
+  p.template.options.extension = '.html';
+  // 通用模版位置
+  p.template.options.source = 'src/templates/pages/default.html';
+  p.eslint.enable = false;
   // 网站自定义配置
   p.rewriteRules = {
     // 网站URL与模版的对应路由关系
@@ -14,7 +21,7 @@ export default (packing) => {
     // API转发
     '^/api/(.*)': 'require!/mock/api/$1.js'
   };
-
+  p.port.dev = 8888;
   return p;
 };
 
