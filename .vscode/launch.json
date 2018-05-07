@@ -7,7 +7,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Electron Main",
+      "name": "Box",
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
       "program": "${workspaceFolder}/index.js",
       "protocol": "inspector"
