@@ -16,9 +16,7 @@
     "eslint": "eslint --fix src",
     "lint": "npm run stylelint && npm run eslint"
   },
-  "pre-commit": [
-    
-  ],
+  "pre-commit": [],
   "dependencies": {
     "antd": "^3.5.0",
     "babel-plugin-import": "^1.7.0",
@@ -29,7 +27,7 @@
     "mobx": "^4.2.1",
     "mobx-react": "^5.1.2",
     "packing": "^3.0.2",
-    "q-antd": "^2.1.136",
+    "q-antd": "^2.2.0",
     "react": "^16.2.0",
     "react-a11y": "^1.0.0",
     "react-dom": "^16.2.0",

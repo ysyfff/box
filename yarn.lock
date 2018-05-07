@@ -6147,9 +6147,9 @@ punycode@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.0.tgz#5f863edc89b96db09074bad7947bf09056ca4e7d"
 
-q-antd@^2.1.136:
-  version "2.1.136"
-  resolved "https://registry.yarnpkg.com/q-antd/-/q-antd-2.1.136.tgz#2d5eb0435036bbeac3405083f6b3930d1dfe57c6"
+q-antd@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/q-antd/-/q-antd-2.2.0.tgz#51eeb86d54ecbb768b321dba54bb3a8b49109da6"
   dependencies:
     async-validator "^1.8.2"
     core-decorators "^0.20.0"
