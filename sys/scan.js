@@ -40,7 +40,7 @@ function scan(mainWindow, scanPath) {
 
 
 function scan2(mainWindow, globRules) {
-  let rules = path.resolve(os.homedir(), 'D**/**/*.mp3');
+  let rules = path.resolve(os.homedir(), 'Desktop/**/*.mp3');
   // let rules2 = path.resolve(os.homedir(), 'M**/**/*.mp3');
   var mp3 = [];
 
