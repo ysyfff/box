@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button } from 'antd';
-import { Input_, Model } from 'q-antd';
+import { Input_, Model, Flexbox } from 'q-antd';
+const { Flex, Block } = Flexbox;
 import * as mobx from 'mobx';
 import { observer } from 'mobx-react';
+import { autobind } from 'core-decorators';
 const electron = require('electron'); //electron 属于node
 
 const { ipcRenderer } = electron;
@@ -22,6 +24,14 @@ const model = observable({
 
 @observer
 export default class Music extends React.Component {
+
+  @autobind
+  startPlay(path){
+    debugger
+    let mp3 = new Audio(`http://127.0.0.1${path}`);
+    mp3.play();
+  }
+
   render() {
     return (
       <div>
@@ -29,10 +39,12 @@ export default class Music extends React.Component {
         <h2>This is funny</h2>
         {mobx.toJS(model.mp3).map((item, i) => {
           return (
-            <div>
-              {item.name}
-              <video src={item.path} controls width={100} height={50}></video>
-            </div>
+            <Flexbox key={i}>
+              <Flex>{item.name}</Flex>
+              <Block><Button type="primary" icon="play-circle-o" onClick={(e) => {
+                this.startPlay(item.path);
+              }}>播放</Button></Block>
+            </Flexbox>
           )
         })}
         <Button type="primary">添加</Button>
