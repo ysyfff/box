@@ -6,13 +6,13 @@ import * as mobx from 'mobx';
 import { observer } from 'mobx-react';
 const electron = require('electron'); //electron 属于node
 
-const { ipcRender } = electron;
+const { ipcRenderer } = electron;
 const { observable } = mobx;
 const data = observable({
   a: 'perfect is perfect'
 });
 
-ipcRender.on('scan:mp3', (e, mp3) => {
+ipcRenderer.on('scan:mp3', (e, mp3) => {
   model.mp3 = mp3;
 });
 
@@ -31,6 +31,7 @@ export default class Music extends React.Component {
           return (
             <div>
               {item.name}
+              <video src={item.path} controls width={100} height={50}></video>
             </div>
           )
         })}

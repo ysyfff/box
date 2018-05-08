@@ -9,6 +9,8 @@
 
 export default (webpackConfig/* , program, appConfig */) => {
   const config = webpackConfig;
+  config.target = 'electron-main';
+  // config.node = { fs: 'empty' };
   // webpackConfig 为系统默认的webpack配置，此处可以根据项目情况修改
   // 修改 entry
   // config.entry = 'xxx/xxx.js';

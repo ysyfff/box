@@ -15,8 +15,8 @@ app.on('ready', function() {
   //   protocol: 'file:',
   //   slashes: true
   // }));
-  mainWindow.loadURL('http://my.qunar.com:8888/music');
+  mainWindow.loadURL('http://127.0.0.1:8888/music');
   // mainWindow.loadURL(`file://${__dirname}/prd/templates/pages/music.html`)
   // mainWindow.loadURL(`file://${__dirname}/app/index.html`)
-  scan.scan(mainWindow);
+  setTimeout(()=>scan.scan(mainWindow), 1000);
 });
