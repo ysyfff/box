@@ -4,11 +4,22 @@ import { Button } from 'antd';
 import { Input_, Model } from 'q-antd';
 import * as mobx from 'mobx';
 import { observer } from 'mobx-react';
+const electron = require('electron'); //electron 属于node
 
+const { ipcRender } = electron;
 const { observable } = mobx;
 const data = observable({
   a: 'perfect is perfect'
 });
+
+ipcRender.on('scan:mp3', (e, mp3) => {
+  model.mp3 = mp3;
+});
+
+const model = observable({
+  mp3: []
+});
+
 @observer
 export default class Music extends React.Component {
   render() {
@@ -16,6 +27,13 @@ export default class Music extends React.Component {
       <div>
         <h1>Welcome to my box</h1>
         <h2>This is funny</h2>
+        {mobx.toJS(model.mp3).map((item, i) => {
+          return (
+            <div>
+              {item.name}
+            </div>
+          )
+        })}
         <Button type="primary">添加</Button>
         <Model model={data}>
           <Input_ duplex="a" />

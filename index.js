@@ -1,7 +1,7 @@
 const electron = require('electron');
 const url = require('url');
 const path = require('path');
-require('./sys/scan.js');
+const scan = require('./sys/scan.js');
 
 const { app, Menu, BrowserWindow } = electron;
 
@@ -16,5 +16,7 @@ app.on('ready', function() {
   //   slashes: true
   // }));
   mainWindow.loadURL('http://my.qunar.com:8888/music');
-  
+  // mainWindow.loadURL(`file://${__dirname}/prd/templates/pages/music.html`)
+  // mainWindow.loadURL(`file://${__dirname}/app/index.html`)
+  scan.scan(mainWindow);
 });
