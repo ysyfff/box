@@ -28,7 +28,7 @@ export default class Music extends React.Component {
   @autobind
   startPlay(path){
     debugger
-    let mp3 = new Audio(`http://127.0.0.1${path}`);
+    let mp3 = new Audio(unescape(`http://127.0.0.1:8888${path.replace(/\s/g, '\\ ')}`));
     mp3.play();
   }
 
