@@ -20,10 +20,10 @@ const data = observable({
 
 ipcRenderer.on('scan:mp3', (e, mp3) => {
   let hasNew = false;
-  debugger
+
   mp3.map((item, i) => {
     let included = mp3Stored.some((mp3) => {
-      mp3.name === item.name;
+      return mp3.name === item.name;
     });
     if (!included) {
       mp3Stored.push(item);
@@ -43,37 +43,43 @@ const model = observable({
 @observer
 export default class Music extends React.Component {
   mp3 = null;
-  @observable status = 'pause';
+  @observable status = 'pause'; //pause play eneded
   @observable currentPath = '';
 
   @autobind
+  onended(){
+    this.status = 'ended';
+  }
+  @autobind
   play(path) {
-    if(path === this.currentPath) {
+    if (path === this.currentPath) {
       this.mp3.play();
       return;
-    }else if(this.mp3){
+    } else if (this.mp3) {
       this.mp3.pause();
     }
-    if(path) {
+    if (path) {
       this.currentPath = path;
     }
     this.mp3 = new Audio(unescape(`http://127.0.0.1:8888${this.currentPath}`));
+    this.mp3.onended = this.onended;
+    window.mp3 = this.mp3;
     this.mp3.play();
     this.status = 'play';
   }
 
   @autobind
-  replay(){
+  replay() {
     this.status = 'play';
-    if(this.mp3) {
+    if (this.mp3) {
       this.mp3.play();
-    }else{
+    } else {
       this.play();
     }
   }
 
   @autobind
-  pause(){
+  pause() {
     this.status = 'pause';
     this.mp3.pause();
   }
@@ -94,12 +100,12 @@ export default class Music extends React.Component {
           )
         })}
         <Button type="primary" shape="circle" icon="step-backward"></Button>
-        {this.status === 'pause' ?
+        {this.status === 'pause' || this.status === 'ended' ?
           <Button type="primary" shape="circle" icon="caret-right" onClick={this.replay}></Button>
           : null
         }
         {
-          this.status === 'play' ?
+          this.status === 'play'  ?
             <Button type="primary" shape="circle" icon="pause" onClick={this.pause}></Button>
             : null
         }
